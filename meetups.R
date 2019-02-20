@@ -4,7 +4,9 @@
 # https://www.meetup.com/meetup_api/
 
 # global
-mkey <- "xxxxxxxxxx7444c702f394f67e637e" # set this to your Meetup API Key
+# set this to your Meetup API Key
+mkey <- "xxxxxxxxxx7444c702f394f67e637e"
+# find it here: https://secure.meetup.com/meetup_api/key/
 
 # ex. mname = "Schaumburg-R-Consultants-Meetup"
 
