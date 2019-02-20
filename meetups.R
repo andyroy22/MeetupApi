@@ -45,12 +45,26 @@ meetup.GetMembers <- function(mname) {
    return (df.all)
 }
 
-# Example call
+# Example Call
+# Note that the 'mname' parameter should be 
+# extracted exactly from the Meetup's url
+#
 # df <- meetup.GetMembers("Schaumburg-R-Consultants-Meetup")
 # View(df)
 #
-# write.csv(df,"Schaumburg-R-Consultants-Meetup members.csv",row.names = F)
+## Examples (uncomment and try it)
 #
-# https://www.meetup.com/members/135745112/ << example of seeing member details >>
+# df$name[df$city=="Schaumburg"]         # members in Schaumburg
+# df$name[grepl("R$|R ",df$topics)]      # members with topics that mention 'R'
 
+## browse by name
+# nm <- "Ganesh Palani"
+# browseURL(paste0("https://www.meetup.com/members/",df$id[df$name==nm],"/"))
 
+## browse by subset
+# dfr <- df[grepl("R$|R ",df$topics),c("name","id")]
+# nrow(dfr)
+
+## random sample
+# for (i in sample(nrow(dfr),5))
+#    browseURL(paste0("https://www.meetup.com/members/",dfr$id[i],"/"))
