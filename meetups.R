@@ -7,6 +7,7 @@
 # set this to your Meetup API Key
 # mkey <- 'xxxxxxxxxxxxxxxxx2f394f67e637e'
 # find it here: https://secure.meetup.com/meetup_api/key/
+mkey <- readRDS("mkey.rds")
 
 # ex. mname = "Schaumburg-R-Consultants-Meetup"
 

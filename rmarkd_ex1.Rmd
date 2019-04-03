@@ -2,7 +2,9 @@
 title: "Using the Meetup API"
 author: "Andy Roy"
 date: "4/3/2019"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -10,13 +12,22 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Example - GetMembers
+The [Meetup API](https://www.meetup.com/meetup_api/) provides a lot of useful information. Here I show how to lookup a group.
 
-```{r meetups}
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(dplyr)
 source("meetups.R")
+```
 
+```{r message=FALSE, warning=FALSE}
 df <- meetup.GetMembers("Schaumburg-R-Consultants-Meetup")
+# All Rows
 df[,1:3]
-## Single Row
+# Single Row
 df[2,]
+```
+### Members by City
+```{r}
+table(df$city) %>% barplot(border=NA,las=2,cex.names=.7)
 ```
 
