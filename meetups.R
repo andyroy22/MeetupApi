@@ -5,7 +5,7 @@
 
 # global
 # set this to your Meetup API Key
-mkey <- "xxxxxxxxxx7444c702f394f67e637e"
+mkey <- 'xxxxxxxxxxxxxxxxx2f394f67e637e'
 # find it here: https://secure.meetup.com/meetup_api/key/
 
 # ex. mname = "Schaumburg-R-Consultants-Meetup"
@@ -19,7 +19,6 @@ meetup.GetMembers <- function(mname) {
                        "&photo-host=public&group_urlname=",mname,
                        "&page=20&offset=",offset)
 
-      message(offset,requrl,appendLF=T)
       req <- GET(url=requrl)
       rsp <- content(req)
 
@@ -40,8 +39,10 @@ meetup.GetMembers <- function(mname) {
 
       if (length(rsp$results) < 20) 
          offset <- -1 # exit while
-      else
+      else {
          offset <- offset + 1
+         Sys.sleep(.5)     # avoid being throttled by Meetup API by pacing requests
+      }
    }
    
    return (df.all)
